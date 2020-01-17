@@ -31,4 +31,5 @@ build/
 .vscode/
 .DS_Store
 
+log/
 src/main/resources/application-prod.yml
