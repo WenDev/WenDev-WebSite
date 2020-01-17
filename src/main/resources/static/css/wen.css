@@ -1,0 +1,234 @@
+/* 去除NavBar的背景颜色和边框颜色，达到极简主义的效果 */
+.navbar-default {
+    background: none !important;
+    border: none !important;
+}
+
+body {
+    font-family: varela round, Arial, sans-serif;
+}
+
+.header h1, .header h4, .container .col-md-12 form h1 {
+    font-family: varela round, "Yuanti SC", Arial, sans-serif;
+}
+
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #CCCCCC !important;
+    background-color: #EEEEEE;
+}
+
+h4 {
+    font-weight: bolder;
+}
+
+pre , pre li{
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 1.6rem !important;
+    line-height: 2.5rem !important;
+}
+
+code {
+    padding: 2px 4px;
+    margin: 0 4px;
+    font-size: 90%;
+    color: #333333;
+    background-color: #EEEEEE;
+    border-radius: 4px;
+}
+
+.prettyprint {
+    border: none !important;
+    padding: 20px !important;
+    margin: 20px 0 !important;
+}
+
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    list-style-type: decimal !important;
+}
+
+.form-control:focus {
+    border-color: #8b0000 !important;
+    outline: 0;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.navbar-default .navbar-brand {
+    color: #8b0000 !important;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #000000 !important;
+    background-color: transparent;
+}
+
+a {
+    color: darkred;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: black;
+    text-decoration: underline;
+}
+
+.article {
+    border-bottom: 1px solid #DDDDDD;
+    padding: 10px 30px 50px 30px;
+    margin: 60px 50px 20px 0;
+}
+
+.footer {
+    margin-top: 100px;
+}
+
+textarea,
+textarea::placeholder {
+    font-size: 1.8rem !important;
+}
+
+form h1 {
+    font-size: 5rem;
+    margin: 50px 0 60px 0;
+}
+
+form label {
+    font-size: 2rem;
+    margin-top: 20px;
+}
+
+nav form label {
+    margin-top: 0 !important;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+    background-color: darkred;
+    border-color: darkred;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    color: black;
+}
+
+.list-group {
+    border-radius: 0;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.list-group-item {
+    border: none
+}
+
+li.list-group-item a {
+    color: black;
+}
+
+span.label-default {
+    font-size: 1.5rem;
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 6px;
+}
+
+.label-default {
+    border: 1px solid #DDDDDD;
+    background-color: transparent;
+    color: #666666;
+    font-weight: unset;
+}
+
+span.label-default strong {
+    color: black;
+}
+
+.alert {
+    margin: 20px 0 20px 0;
+}
+
+div.article a.btn-default, input[type="submit"],
+form a.btn-default.btn-lg {
+    border: none;
+    color: white;
+    background-color: darkred;
+}
+
+div.article a.btn-default.btn-lg:active,
+input[type="submit"]:hover,
+input[type="submit"]:active,
+form a.btn-default.btn-lg:hover,
+form a.btn-default.btn-lg:active {
+    color: white !important;
+    background-color: #5b0000 !important;
+}
+
+div.article span.info-content {
+    margin-right: 20px;
+}
+
+div.article span.glyphicon,
+div.article span.info-content {
+    color: #666666;
+}
+
+div.article h1 {
+    line-height: 5rem;
+}
+
+div.article p {
+    margin-top: 20px;
+    color: #666666;
+}
+
+.article-info {
+    margin-top: 30px;
+}
+
+.right-info {
+    margin-top: 40px;
+}
+
+.friends {
+    margin-right: 7px;
+}
+
+.header {
+    background: #EEE url(../img/34844544_p0.jpg) no-repeat 0 -60px;
+    background-size: 100% auto;
+    height: 500px;
+    top: 0;
+    width: 100%;
+    display: flex;
+    z-index: -100;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+nav.navbar-default {
+    z-index: 100 !important;
+}
+
+nav.navbar-default a.dropdown-toggle {
+    color: white !important;
+}
+
+div.header h1 {
+    color: white;
+    font-size: 6rem;
+}
+
+div.header h4 {
+    color: white;
+}

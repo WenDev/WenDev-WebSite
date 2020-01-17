@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
+    <title>注册</title>
+    <link rel="stylesheet" th:href="@{css/wen.css}">
+</head>
+<body>
+<!-- Header -->
+<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
+<!-- End Header -->
+
+<!-- Content -->
+<div class="container">
+    <!-- Body -->
+    <div class="container">
+        <div class="col-md-12">
+            <form style="margin-bottom: 100px;" action="/register" method="post">
+                <h1>注册  <small>Register</small></h1>
+                <div style="margin-bottom: 30px;">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" name="username" type="text" class="form-control"
+                               placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" class="form-control"
+                               placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="repeat-password">Repeat Password</label>
+                        <input id="repeat-password" name="repeatPassword"
+                               type="password" class="form-control" placeholder="Repeat Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname">Nickname</label>
+                        <input id="nickname" name="nickname" type="text" class="form-control"
+                               placeholder="Nickname">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" class="form-control"
+                               placeholder="Email">
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-default btn-lg" value="Submit">
+                <div class="alert alert-danger" role="alert"
+                     th:if="${errInfo != null}" th:text="${errInfo}"></div>
+                <div style="font-size: 1.8rem; margin-top: 30px;">
+                    <a th:href="@{/login}">已有账号？点此登录</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- End Body -->
+
+    <!-- Footer -->
+    <div th:replace="components/footer :: footer"></div>
+    <!-- End Footer -->
+
+</div>
+<!-- End Content -->
+</body>
+</html>

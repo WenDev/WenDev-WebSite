@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
+    <title>WenDev</title>
+    <link rel="stylesheet" th:href="@{css/wen.css}">
+</head>
+<body>
+
+<!-- Header -->
+<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
+<!-- End Header -->
+
+<!-- Content -->
+<div class="container-fluid">
+    <!-- Body -->
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <!-- Margin-Left -->
+            <div class="col-md-1" style="background-color: transparent; height: 200px;"></div>
+            <!-- End Margin-Left -->
+
+            <!-- Articles -->
+            <div class="col-md-8">
+                <div class="article">
+                    <div>
+                        <h1>2019-12-15 Spring Cloud微服务从入门到入土（2）使用Nacos进行服务注册与发现</h1>
+                    </div>
+                    <div>
+                        <p>启动Nacos
+                            官网：https://nacos.io/zh-cn/
+                            下载地址：https://github.com/alibaba/nacos/releases
+                            解压后使用以下命令启动：
+                            sh nacos/bin/startup.sh -m standalone
+                            其中standalone表示以单机模式运行，具体可以参考文档。
+                            启动后访问127.0.0.1:8848，默认用户名和密码都是nacos，登录后就可以看到Nacos控制台了。
+                        </p>
+                    </div>
+                    <div class="article-info">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        <span class="info-content">2020-1-1</span>
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        <span class="info-content">Spring Cloud</span>
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="info-content">Java</span>
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <span class="info-content">300</span>
+                    </div>
+                    <div>
+                        <a class="btn btn-default pull-right">Read More</a>
+                    </div>
+                </div>
+                <div class="article">
+                    <div>
+                        <h1>2019-12-15 Spring Cloud微服务从入门到入土（2）使用Nacos进行服务注册与发现</h1>
+                    </div>
+                    <div>
+                        <p>启动Nacos
+                            官网：https://nacos.io/zh-cn/
+                            下载地址：https://github.com/alibaba/nacos/releases
+                            解压后使用以下命令启动：
+                            sh nacos/bin/startup.sh -m standalone
+                            其中standalone表示以单机模式运行，具体可以参考文档。
+                            启动后访问127.0.0.1:8848，默认用户名和密码都是nacos，登录后就可以看到Nacos控制台了。
+                        </p>
+                    </div>
+                    <div class="article-info">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        <span class="info-content">2020-1-1</span>
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        <span class="info-content">Spring Cloud</span>
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="info-content">Java</span>
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <span class="info-content">300</span>
+                    </div>
+                    <div>
+                        <a class="btn btn-default pull-right">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Articles -->
+
+            <!-- Content-Right -->
+            <div class="col-md-2">
+                <!-- Top Categories -->
+                <div>
+                    <h4 class="right-info">Top 5 Types</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-arrow-right"></span>
+                            <a href="#">Cras justo odio</a>
+                            <span class="badge">14</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-arrow-right"></span>
+                            <a href="#">Cras justo odio</a>
+                            <span class="badge">14</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-arrow-right"></span>
+                            <a href="#">Cras justo odio</a>
+                            <span class="badge">14</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-arrow-right"></span>
+                            <a href="#">Cras justo odio</a>
+                            <span class="badge">14</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-arrow-right"></span>
+                            <a href="#">Cras justo odio</a>
+                            <span class="badge">14</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End top categories -->
+                <!-- Top Tags -->
+                <div>
+                    <h4 class="right-info">Top 10 Tags</h4>
+                    <div>
+                        <span class="label label-default">
+                            <strong>Java</strong>
+                            <span>10</span>
+                        </span>
+                        <span class="label label-default">
+                            <strong>微服务</strong>
+                            <span>10</span>
+                        </span>
+                        <span class="label label-default">
+                            <strong>C语言</strong>
+                            <span>10</span>
+                        </span>
+                        <span class="label label-default">
+                            <strong>Java Web安全</strong>
+                            <span>10</span>
+                        </span>
+                        <span class="label label-default">
+                            <strong>CTF</strong>
+                            <span>10</span>
+                        </span>
+                        <span class="label label-default">
+                            <strong>Web后端</strong>
+                            <span>10</span>
+                        </span>
+                        <span class="label label-default">
+                            <strong>算法</strong>
+                            <span>10</span>
+                        </span>
+                        <span class="label label-default">
+                            <strong>Java</strong>
+                            <span>10</span>
+                        </span>
+                        <span class="label label-default">
+                            <strong>Java</strong>
+                            <span>10</span>
+                        </span>
+                        <span class="label label-default">
+                            <strong>Java</strong>
+                            <span>10</span>
+                        </span>
+                    </div>
+                </div>
+                <!-- End Top Tags -->
+            </div>
+            <!-- End Content-Right -->
+
+            <!-- Margin-Right -->
+            <div class="col-md-1" style="background-color: transparent; height: 200px;"></div>
+            <!-- End Margin-Right -->
+        </div>
+    </div>
+    <!-- End Body -->
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation" class="col-md-offset-4 col-lg-offset-4col-xl-offset-4">
+        <ul class="pagination">
+            <li class="disabled">
+                <span>
+                    <span aria-hidden="true">&laquo;</span>
+                </span>
+            </li>
+            <li class="active">
+                <span>1</span>
+            </li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- End Pagination -->
+
+<!-- Footer -->
+    <div th:replace="components/footer :: footer"></div>
+<!-- End Footer -->
+
+</div>
+<!-- End Content -->
+</body>
+</html>

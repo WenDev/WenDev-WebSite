@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
+    <meta charset="UTF-8">
+    <title>文章管理</title>
+    <link rel="stylesheet" href="/css/wen.css">
+</head>
+<body>
+<!-- Header -->
+<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
+<!-- End Header -->
+
+<!-- Content -->
+<div class="container">
+    <!-- Body -->
+    <div class="container">
+        <h1>Article Manage</h1>
+        <h2 style="margin: 40px 0 20px 0;">Search</h2>
+        <form>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="title" placeholder="title">
+            </div>
+            <div class="form-group">
+                <label for="type">Type</label>
+                <input class="form-control" type="text" id="type" name="type" placeholder="type">
+            </div>
+            <a class="btn btn-default" type="submit">Search</a>
+        </form>
+        <h2>Result</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td>id</td>
+                <td>标题</td>
+                <td>发表时间</td>
+                <td>类型</td>
+                <td>操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>文章1</td>
+                <td>2020-1-1</td>
+                <td>Java</td>
+                <td>
+                    <a href="#" class="btn btn-default">修改</a>
+                    <a href="#" class="btn btn-default">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>文章2</td>
+                <td>2020-1-1</td>
+                <td>Spring Boot</td>
+                <td>
+                    <a href="#" class="btn btn-default">修改</a>
+                    <a href="#" class="btn btn-default">删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- End Body -->
+
+    <!-- Footer -->
+    <div th:replace="components/footer :: footer"></div>
+    <!-- End Footer -->
+
+</div>
+<!-- End Content -->
+</body>
+</html>

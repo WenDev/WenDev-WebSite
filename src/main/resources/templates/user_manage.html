@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
+    <meta charset="UTF-8">
+    <title>文章管理</title>
+    <link rel="stylesheet" href="/css/wen.css">
+</head>
+<body>
+<!-- Header -->
+<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
+<!-- End Header -->
+
+
+<!-- Content -->
+<div class="container">
+    <!-- Body -->
+    <div class="container">
+        <h1 style="margin: 40px 0 40px 0;">User Manage</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td>id</td>
+                <td>用户名</td>
+                <td>注册时间</td>
+                <td>角色</td>
+                <td>操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>User1</td>
+                <td>2020-1-1</td>
+                <td>User</td>
+                <td>
+                    <a href="#" class="btn btn-default">修改</a>
+                    <a href="#" class="btn btn-default">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>User2</td>
+                <td>2020-1-1</td>
+                <td>Admin</td>
+                <td>
+                    <a href="#" class="btn btn-default">修改</a>
+                    <a href="#" class="btn btn-default">删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- End Body -->
+
+
+    <!-- Footer -->
+    <div th:replace="components/footer :: footer"></div>
+    <!-- End Footer -->
+</div>
+<!-- End Content -->
+</body>
+</html>

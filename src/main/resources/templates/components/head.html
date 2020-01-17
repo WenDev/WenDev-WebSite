@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title, css)">
+    <!-- Page Info -->
+    <meta charset="UTF-8">
+    <title th:replace="${title}">Title</title>
+
+    <!-- Start Bootstrap -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- End Bootstrap -->
+
+    <!-- Google Code Prettify -->
+    <link href="https://cdn.bootcss.com/prettify/r298/prettify.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/prettify/r298/prettify.js"></script>
+    <!-- End Google Code Prettify -->
+
+    <!-- My Stylesheets -->
+    <link rel="stylesheet" th:replace="${css}">
+    <!-- End My Stylesheets -->
+</head>
+<body>
+
+</body>
+</html>

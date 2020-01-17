@@ -1,0 +1,19 @@
+server:
+  port: 10000
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wendev?useUnicode=true&charset=utf8mb4
+    username: root
+    password: "@1234567890"
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+logging:
+  level:
+    root: info
+    site.wendev.website: debug
+  file:
+    path: log/
+  config: classpath:logback-spring.xml

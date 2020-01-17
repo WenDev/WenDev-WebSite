@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+<h1>Error Info:</h1>
+<div>
+    <div th:text="'Request URL: ' + ${url}"></div>
+    <div th:text="'Exception Message: ' + ${exception}"></div>
+</div>
+</body>
+</html>

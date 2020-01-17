@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NavBar And Head</title>
+</head>
+<body>
+
+<div th:fragment="navbarAndHeader">
+    <!-- Head -->
+    <div class="header">
+        <h1>江文｜WenDev</h1>
+        <h4>不想当切图仔的接口仔不是好架构师</h4>
+    </div>
+
+    <!-- Start Navigation Bar -->
+    <nav class="navbar navbar-default" style="position: fixed; top: 0; width: 100%">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">江文 | WenDev</a>
+            </div>
+
+            <!-- NavBar Body -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <!-- Drop Down Menu -->
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button" aria-haspopup="true" aria-expanded="false">
+                            Article
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">
+                                <span class="glyphicon glyphicon-list"
+                                      style="margin: 5px"></span>
+                                    Types
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <span class="glyphicon glyphicon-tags"
+                                      style="margin: 5px"></span>
+                                    Tags
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <span class="glyphicon glyphicon-folder-open"
+                                      style="margin: 5px"></span>
+                                    Archive
+                                </a>
+                            </li>
+
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">
+                                <span class="glyphicon glyphicon-link"
+                                      style="margin: 5px"></span>
+                                    Friends
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button" aria-haspopup="true" aria-expanded="false">
+                            Action
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li th:if="${session.username != null}">
+                                <a>
+                                    <span class="glyphicon glyphicon-ok" style="margin: 5px"></span>
+                                    <span>Signed in as </span>
+                                    <span th:text="${session.username}" style="font-weight: bolder"></span>
+                                </a>
+                            </li>
+                            <li th:if="${session.userId == null}">
+                                <a th:href="@{/login}">
+                                <span class="glyphicon glyphicon-log-in"
+                                      style="margin: 5px"></span>
+                                    Login
+                                </a>
+                            </li>
+                            <li th:if="${session.userId == null}">
+                                <a th:href="@{/register}">
+                                <span class="glyphicon glyphicon-saved"
+                                      style="margin: 5px"></span>
+                                    Register
+                                </a>
+                            </li>
+                            <li th:if="${session.userId != null}">
+                                <a th:href="@{/logout}">
+                                <span class="glyphicon glyphicon-log-out"
+                                      style="margin: 5px"></span>
+                                    Logout
+                                </a>
+                            </li>
+                            <li role="separator" class="divider" th:if="${session.userId == 1}"></li>
+                            <li th:if="${session.userId == 1}">
+                                <a th:href="@{/admin/add}">
+                                <span class="glyphicon glyphicon-plus"
+                                      style="margin: 5px"></span>
+                                    Add
+                                </a>
+                            </li>
+                            <li th:if="${session.userId == 1}">
+                                <a th:href="@{/admin/article}">
+                                <span class="glyphicon glyphicon-align-center"
+                                      style="margin: 5px"></span>
+                                    Article Management
+                                </a>
+                            </li>
+                            <li th:if="${session.userId == 1}">
+                                <a th:href="@{/admin/user}">
+                                <span class="glyphicon glyphicon-user"
+                                      style="margin: 5px"></span>
+                                    User Management
+                                </a>
+                            </li>
+                            <li th:if="${session.userId == 1}">
+                                <a th:href="@{/admin/add}">
+                                <span class="glyphicon glyphicon-list"
+                                      style="margin: 5px"></span>
+                                    Type Management
+                                </a>
+                            </li>
+                            <li th:if="${session.userId == 1}">
+                                <a th:href="@{/admin/add}">
+                                <span class="glyphicon glyphicon-tags"
+                                      style="margin: 5px"></span>
+                                    Tag Management
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- End Drop Down Menu -->
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" class="dropdown-toggle">About Me</a></li>
+                </ul>
+
+                <!-- NavBar Search -->
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <label for="nav-search"></label>
+                        <input type="text" id="nav-search" class="form-control" placeholder="Search">
+                    </div>
+                    <a type="submit" class="btn btn-default">
+                        Submit
+                    </a>
+                </form>
+                <!-- End NavBar Search -->
+            </div>
+            <!-- End NavBar Body -->
+        </div>
+    </nav>
+    <!-- End Navigation Bar -->
+    <!-- End Head -->
+</div>
+
+</body>
+</html>
