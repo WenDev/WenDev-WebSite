@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 管理员相关的拦截器
+ *
  * @author jiangwen
  */
 public class AdminInterceptor extends HandlerInterceptorAdapter {

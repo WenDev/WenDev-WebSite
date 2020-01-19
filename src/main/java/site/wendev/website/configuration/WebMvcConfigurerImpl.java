@@ -11,7 +11,7 @@ import site.wendev.website.intercepor.AdminInterceptor;
  * @author jiangwen
  */
 @Configuration
-public class WebMvcConfigure implements WebMvcConfigurer {
+public class WebMvcConfigurerImpl implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new AdminInterceptor()).addPathPatterns("/admin/**");

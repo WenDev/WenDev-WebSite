@@ -24,9 +24,9 @@ public class LogAspect {
 
     @Before("log()")
     public void doBefore(JoinPoint joinPoint) {
-        ServletRequestAttributes attributes =
+        var attributes =
                 (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = attributes.getRequest();
+        var request = attributes.getRequest();
 
         String uri = request.getRequestURI();
         String ip = request.getRemoteAddr();
