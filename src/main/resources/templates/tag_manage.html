@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
+    <meta charset="UTF-8">
+    <title>标签管理</title>
+    <link rel="stylesheet" href="/css/wen.css">
+</head>
+<body>
+<!-- Header -->
+<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
+<!-- End Header -->
+
+
+<!-- Content -->
+<div class="container">
+    <div class="alert alert-danger" role="alert"
+         th:if="${errInfo != null}" th:text="${errInfo}"></div>
+    <div class="alert alert-success" role="alert"
+         th:if="${successInfo != null}" th:text="${successInfo}"></div>
+    <!-- Body -->
+    <div th:if="${tag != null}">
+        <h1>修改标签</h1>
+        <form th:action="@{'/admin/tag/edit/' + ${tag.getId()}}" method="post">
+            <div class="form-group">
+                <label for="new_tag_name">标签名称</label>
+                <input id="new_tag_name" type="text" class="form-control" name="name"
+                       placeholder="标签名称"  th:value="${tag.getName()}">
+            </div>
+            <input type="submit" value="Submit" class="btn btn-default">
+        </form>
+    </div>
+
+    <div class="container" th:if="${tag == null}">
+        <h1 style="margin: 40px 0 40px 0;">Tag Management</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td>序号</td>
+                <td>id</td>
+                <td>分类名</td>
+                <td>操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item, iterStat : ${page.content}">
+                <td th:text="${iterStat.count}"></td>
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.name}"></td>
+                <td>
+                    <a th:href="@{'/admin/tag/edit/' + ${item.id}}" class="btn btn-default">修改</a>
+                    <a th:href="@{'/admin/tag/delete/' + ${item.id}}" class="btn btn-default">删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation" class="col-md-offset-4 col-lg-offset-4col-xl-offset-4">
+            <ul class="pagination">
+                <li class="disabled" th:if="${page.first == true}">
+                <span>
+                    <span aria-hidden="true">&laquo;</span>
+                </span>
+                </li>
+                <li th:if="${page.first == false}">
+                    <a th:href="@{/admin/tag(page=${page.number} - 1)}" aria-label="Next">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <!-- 当前页面小于等于4 -->
+                <li class="page-item" th:if="${(page.number + 1) le 4}"
+                    th:each="i : ${#numbers.sequence(0, page.totalPages)}"
+                    th:classappend="${(page.number + 1) eq i + 1} ? 'active' : ''">
+                    <a th:href="@{/admin/tag(page=${i})}">
+                        <span data-th-text="${i + 1}"></span>
+                    </a>
+                </li>
+
+                <!--                <li class="active">-->
+                <!--                    <span>1</span>-->
+                <!--                </li>-->
+                <!--                <li><a href="#">2</a></li>-->
+                <!--                <li><a href="#">3</a></li>-->
+                <!--                <li><a href="#">4</a></li>-->
+                <!--                <li><a href="#">5</a></li>-->
+                <li class="disabled" th:if="${page.last == true}">
+                <span>
+                    <span aria-hidden="true">&raquo;</span>
+                </span>
+                </li>
+                <li th:if="${page.last == false}">
+                    <a th:href="@{/admin/tag(page=${page.number} + 1)}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Pagination -->
+    </div>
+
+    <div th:if="${tag == null}">
+        <h1>新增标签</h1>
+        <form action="/admin/tag/add" method="post">
+            <div class="form-group">
+                <label for="tag_name">标签名称</label>
+                <input id="tag_name" type="text" class="form-control" name="name" placeholder="标签名称">
+            </div>
+            <input type="submit" value="Submit" class="btn btn-default">
+        </form>
+    </div>
+    <!-- End Body -->
+
+    <!-- Footer -->
+    <div th:replace="components/footer :: footer"></div>
+    <!-- End Footer -->
+</div>
+<!-- End Content -->
+</body>
+</html>

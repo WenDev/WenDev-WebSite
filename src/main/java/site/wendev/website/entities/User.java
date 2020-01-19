@@ -6,6 +6,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * 用户实体类
+ *
  * @author jiangwen
  */
 @Data
@@ -29,11 +32,13 @@ public class User {
     @Column
     @NotNull(message = "用户名不能为空")
     @NotEmpty(message = "用户名不能为空字符串")
+    @NotBlank(message = "用户名不能为空")
     private String username;
 
     @Column
     @NotNull(message = "用户昵称不能为空")
     @NotEmpty(message = "用户昵称不能为空字符串")
+    @NotBlank(message = "用户昵称不能为空")
     private String nickname;
 
     @Column
