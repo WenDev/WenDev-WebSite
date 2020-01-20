@@ -1,5 +1,7 @@
 package site.wendev.website.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import site.wendev.website.entities.User;
 
 /**
@@ -31,13 +33,16 @@ public interface UserService {
      * @param user 要修改信息的用户
      * @return 修改成功为修改成功的用户，修改失败为null
      */
-    User modify(User user);
+    User modify(Long id, User user);
 
     /**
      * 删除用户
      *
-     * @param user 要删除的用户
-     * @return 删除成功为0，删除失败为-1
+     * @param id 要删除的用户的id
      */
-    int delete(User user);
+    void delete(Long id);
+
+    Page<User> list(Pageable pageable);
+    User findById(Long id);
+    User findByUsername(User user);
 }

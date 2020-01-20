@@ -1,6 +1,9 @@
 package site.wendev.website.service.impl;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import site.wendev.website.dao.UserRepository;
 import site.wendev.website.entities.User;
@@ -49,12 +52,36 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User modify(User user) {
-        return null;
+    public User modify(Long id, User user) {
+        var userOptional = userRepository.findById(id);
+        if (userOptional.isEmpty()) {
+            return null;
+        } else {
+            var newUser = userOptional.get();
+            newUser.setUsername(user.getUsername());
+            newUser.setNickname(user.getNickname());
+            newUser.setEmail(user.getEmail());
+            return userRepository.save(newUser);
+        }
     }
 
     @Override
-    public int delete(User user) {
-        return 0;
+    public void delete(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<User> list(Pageable pageable) {
+        return userRepository.findAll(pageable);
+    }
+
+    @Override
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public User findByUsername(User user) {
+        return userRepository.findByUsername(user.getUsername());
     }
 }
