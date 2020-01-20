@@ -17,6 +17,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -61,8 +62,13 @@ public class ArticleServiceImpl implements ArticleService {
         if (articleOptional.isEmpty()) {
             return null;
         } else {
-            BeanUtils.copyProperties(articleOptional.get(), article);
-            return articleRepository.save(article);
+            var newArticle = articleOptional.get();
+            newArticle.setTitle(article.getTitle());
+            newArticle.setContent(article.getContent());
+            newArticle.setType(article.getType());
+            newArticle.setTags(article.getTags());
+            newArticle.setUpdateTime(new Date());
+            return articleRepository.save(newArticle);
         }
     }
 

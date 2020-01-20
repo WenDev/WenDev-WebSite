@@ -21,12 +21,13 @@
                 <label for="title">Title</label>
                 <input class="form-control" type="text" id="title" name="title" placeholder="title">
             </div>
+            <!-- TODO: 这里的类型选择应该用下拉列表，并且给一个TypeID的属性，因为最终传递的是TypeID，手打肯定不方便 -->
             <div class="form-group">
                 <label for="type">TypeId</label>
                 <input class="form-control" type="text" id="type" name="typeId" placeholder="type">
             </div>
             <input type="hidden" name="page">
-            <a onclick="loadData()" class="btn btn-default" type="submit">Search</a>
+            <a onclick="submit()" class="btn btn-default" type="submit">Search</a>
         </form>
         <h2>Result</h2>
         <div id="table_container">
@@ -36,7 +37,7 @@
                     <td>序号</td>
                     <td>id</td>
                     <td>标题</td>
-                    <td>发表时间</td>
+                    <td>最后修改时间</td>
                     <td>类型</td>
                     <td>类型ID</td>
                     <td>操作</td>
@@ -49,10 +50,10 @@
                     <td th:text="${article.title}"></td>
                     <td th:text="${article.updateTime}"></td>
                     <td th:text="${article.type.name}"></td>
-                    <td th:title="${article.type.id}"></td>
+                    <td th:text="${article.type.id}"></td>
                     <td>
-                        <a th:href="@{'/admin/article/edit' + ${article.id}}" class="btn btn-default">修改</a>
-                        <a th:href="@{'/admin/article/delete' + ${article.id}}" class="btn btn-default">删除</a>
+                        <a th:href="@{'/admin/article/edit/' + ${article.id}}" class="btn btn-default">修改</a>
+                        <a th:href="@{'/admin/article/delete/' + ${article.id}}" class="btn btn-default">删除</a>
                     </td>
                 </tr>
                 </tbody>
@@ -126,6 +127,11 @@
       typeId: $('[name = "typeId"]').val(),
       page: $('[name = "page"]').val()
     })
+  }
+
+  function submit () {
+    $('[name="page"]').val(0)
+    loadData()
   }
 </script>
 </body>
