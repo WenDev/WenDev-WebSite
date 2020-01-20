@@ -22,45 +22,88 @@
                 <input class="form-control" type="text" id="title" name="title" placeholder="title">
             </div>
             <div class="form-group">
-                <label for="type">Type</label>
-                <input class="form-control" type="text" id="type" name="type" placeholder="type">
+                <label for="type">TypeId</label>
+                <input class="form-control" type="text" id="type" name="typeId" placeholder="type">
             </div>
-            <a class="btn btn-default" type="submit">Search</a>
+            <input type="hidden" name="page">
+            <a onclick="loadData()" class="btn btn-default" type="submit">Search</a>
         </form>
         <h2>Result</h2>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <td>id</td>
-                <td>标题</td>
-                <td>发表时间</td>
-                <td>类型</td>
-                <td>操作</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>文章1</td>
-                <td>2020-1-1</td>
-                <td>Java</td>
-                <td>
-                    <a href="#" class="btn btn-default">修改</a>
-                    <a href="#" class="btn btn-default">删除</a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>文章2</td>
-                <td>2020-1-1</td>
-                <td>Spring Boot</td>
-                <td>
-                    <a href="#" class="btn btn-default">修改</a>
-                    <a href="#" class="btn btn-default">删除</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <div id="table_container">
+            <table class="table table-striped" th:fragment="articleList">
+                <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>id</td>
+                    <td>标题</td>
+                    <td>发表时间</td>
+                    <td>类型</td>
+                    <td>类型ID</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="article, iterStat : ${page.content}">
+                    <td th:text="${iterStat.count}"></td>
+                    <td th:text="${article.id}"></td>
+                    <td th:text="${article.title}"></td>
+                    <td th:text="${article.updateTime}"></td>
+                    <td th:text="${article.type.name}"></td>
+                    <td th:title="${article.type.id}"></td>
+                    <td>
+                        <a th:href="@{'/admin/article/edit' + ${article.id}}" class="btn btn-default">修改</a>
+                        <a th:href="@{'/admin/article/delete' + ${article.id}}" class="btn btn-default">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation" class="col-md-offset-4 col-lg-offset-4col-xl-offset-4">
+            <ul class="pagination">
+                <li class="disabled" th:if="${page.first == true}">
+                <span>
+                    <span aria-hidden="true">&laquo;</span>
+                </span>
+                </li>
+                <li th:if="${page.first == false}">
+                    <a th:href="@{/admin/article(page=${page.number} - 1)}" aria-label="Next"
+                       onclick="page(this)" th:attr="data-page=${page.number - 1}">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <!-- 当前页面小于等于4 -->
+                <li class="page-item" th:if="${(page.number + 1) le 4}"
+                    th:each="i : ${#numbers.sequence(1, page.totalPages)}"
+                    th:classappend="${(page.number + 1) eq i} ? 'active' : ''">
+                    <a th:href="@{/admin/article(page=${i - 1})}">
+                        <span data-th-text="${i}"></span>
+                    </a>
+                </li>
+
+                <!--                <li class="active">-->
+                <!--                    <span>1</span>-->
+                <!--                </li>-->
+                <!--                <li><a href="#">2</a></li>-->
+                <!--                <li><a href="#">3</a></li>-->
+                <!--                <li><a href="#">4</a></li>-->
+                <!--                <li><a href="#">5</a></li>-->
+                <li class="disabled" th:if="${page.last == true}">
+                <span>
+                    <span aria-hidden="true">&raquo;</span>
+                </span>
+                </li>
+                <li th:if="${page.last == false}">
+                    <a th:href="@{/admin/article(page=${page.number} + 1)}" aria-label="Next"
+                       onclick="page(this)" th:attr="data-page=${page.number + 1}">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Pagination -->
+
     </div>
     <!-- End Body -->
 
@@ -70,5 +113,20 @@
 
 </div>
 <!-- End Content -->
+
+<script>
+  function page (object) {
+    $('[name = "page"]').val($(object).data())
+    loadData()
+  }
+
+  function loadData () {
+    $('#table_container').load(/*[[@{/admin/article/search}]]*/'/admin/article/search', {
+      title: $('[name = "title"]').val(),
+      typeId: $('[name = "typeId"]').val(),
+      page: $('[name = "page"]').val()
+    })
+  }
+</script>
 </body>
 </html>
