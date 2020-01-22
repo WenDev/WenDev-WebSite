@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import site.wendev.website.dao.ArticleRepository;
 import site.wendev.website.entities.Article;
 import site.wendev.website.entities.Type;
+import site.wendev.website.exception.NotFoundException;
 import site.wendev.website.service.ArticleService;
+import site.wendev.website.util.MarkdownUtils;
 import site.wendev.website.vo.ArticleVO;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -31,6 +33,22 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public Article findAndConvert(Long id) {
+        var articleOptional = articleRepository.findById(id);
+        if (articleOptional.isEmpty()) {
+            throw new NotFoundException("id为" + id + "的文章不存在");
+        } else {
+            var article = new Article();
+            var article1 = articleOptional.get();
+            BeanUtils.copyProperties(article1, article);
+            var content = article.getContent();
+            article.setContent(MarkdownUtils.markdown2Html(content));
+
+            return article;
+        }
+    }
+
+    @Override
     public Page<Article> list(Pageable pageable, ArticleVO article) {
         return articleRepository.findAll(new Specification<Article>() {
             @Override
@@ -49,6 +67,16 @@ public class ArticleServiceImpl implements ArticleService {
                 return null;
             }
         }, pageable);
+    }
+
+    @Override
+    public Page<Article> list(Pageable pageable, String param) {
+        return articleRepository.findByParam(param, pageable);
+    }
+
+    @Override
+    public Page<Article> list(Pageable pageable) {
+        return articleRepository.findAll(pageable);
     }
 
     @Override

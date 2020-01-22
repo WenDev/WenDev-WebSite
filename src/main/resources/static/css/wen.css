@@ -8,7 +8,7 @@ body {
     font-family: varela round, Arial, sans-serif;
 }
 
-.header h1, .header h4, .container .col-md-12 form h1 {
+.header h1, .header h4, .container .col-md-12 form h1, .big-title h1 {
     font-family: varela round, "Yuanti SC", Arial, sans-serif;
 }
 
@@ -93,7 +93,7 @@ textarea::placeholder {
     font-size: 1.8rem !important;
 }
 
-form h1 {
+form h1, .big-title h1 {
     font-size: 5rem;
     margin: 50px 0 60px 0;
 }
@@ -182,8 +182,13 @@ div.article span.info-content {
     color: #666666;
 }
 
-div.article h1 {
+div.article h1 a,
+div.article h1 a:hover,
+div.article h1 a:visited,
+div.article h1 a:active {
+    text-decoration: none;
     line-height: 5rem;
+    color: #333;
 }
 
 div.article p {
@@ -222,6 +227,12 @@ nav.navbar-default {
 
 nav.navbar-default a.dropdown-toggle {
     color: white !important;
+}
+
+nav.navbar-default input[type="submit"] {
+    background-color: white !important;
+    color: #666 !important;
+    border: 1px solid #CCC !important;
 }
 
 div.header h1 {

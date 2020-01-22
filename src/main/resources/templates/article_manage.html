@@ -12,6 +12,9 @@
 
 <!-- Content -->
 <div class="container">
+    <div class="alert alert-danger" role="alert"
+         th:if="${errInfo != null}" th:text="${errInfo}"></div>
+
     <!-- Body -->
     <div class="container">
         <h1>Article Manage</h1>
@@ -47,7 +50,9 @@
                 <tr th:each="article, iterStat : ${page.content}">
                     <td th:text="${iterStat.count}"></td>
                     <td th:text="${article.id}"></td>
-                    <td th:text="${article.title}"></td>
+                    <td>
+                        <a th:href="@{'/article/' + ${article.id}}" th:text="${article.title}"></a>
+                    </td>
                     <td th:text="${article.updateTime}"></td>
                     <td th:text="${article.type.name}"></td>
                     <td th:text="${article.type.id}"></td>

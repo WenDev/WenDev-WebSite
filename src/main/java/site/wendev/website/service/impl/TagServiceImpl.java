@@ -2,12 +2,16 @@ package site.wendev.website.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import site.wendev.website.dao.TagRepository;
 import site.wendev.website.entities.Tag;
 import site.wendev.website.service.TagService;
+
+import java.util.List;
 
 /**
  * 标签相关服务的接口实现类
@@ -60,5 +64,13 @@ public class TagServiceImpl implements TagService {
     @Transactional
     public Page<Tag> listTag(Pageable pageable) {
         return tagRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Tag> listTag(Integer size) {
+        Sort.Order order = new Sort.Order(Sort.Direction.DESC, "articles.size");
+        Pageable pageable = PageRequest.of(0, size, Sort.by(order));
+
+        return tagRepository.findTop(pageable);
     }
 }

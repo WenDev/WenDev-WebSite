@@ -60,7 +60,7 @@ public class ArticleController {
     @PostMapping(value = {"/add", "/edit/{id}"})
     public String addArticle(@RequestParam @Valid String title, @RequestParam @Valid String content,
                              @RequestParam @Valid String type, @RequestParam @Valid String tag,
-                             RedirectAttributes attributes, @PathVariable Long id) {
+                             RedirectAttributes attributes, @PathVariable(required = false) Long id) {
         // 根据空格切分type，得到type数组并转换为List<Tag>类型
         var tagsNameArray = tag.trim().split(BLANK);
         List<Tag> tagList = new ArrayList<>();

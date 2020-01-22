@@ -20,7 +20,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
-@ToString
 @Entity
 @Table(name = "wendev_article")
 public class Article {

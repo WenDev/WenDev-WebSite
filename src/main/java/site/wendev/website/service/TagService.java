@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import site.wendev.website.entities.Tag;
 
+import java.util.List;
+
 /**
  * Tag相关服务的接口
  *
@@ -16,4 +18,5 @@ public interface TagService {
     Tag modify(Long id, Tag tag);
     void delete(Long id);
     Page<Tag> listTag(Pageable pageable);
+    List<Tag> listTag(Integer size);
 }

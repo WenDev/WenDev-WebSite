@@ -2,13 +2,17 @@ package site.wendev.website.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import site.wendev.website.dao.TypeRepository;
 import site.wendev.website.entities.Type;
 import site.wendev.website.exception.NotFoundException;
 import site.wendev.website.service.TypeService;
+
+import java.util.List;
 
 @Service
 public class TypeServiceImpl implements TypeService {
@@ -36,6 +40,13 @@ public class TypeServiceImpl implements TypeService {
     @Transactional
     public Page<Type> listType(Pageable pageable) {
         return typeRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Type> listType(Integer size) {
+        Sort.Order order = new Sort.Order(Sort.Direction.DESC, "articles.size");
+        Pageable pageable = PageRequest.of(0, size, Sort.by(order));
+        return typeRepository.findTop(pageable);
     }
 
     @Override

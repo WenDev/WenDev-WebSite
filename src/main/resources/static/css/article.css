@@ -96,7 +96,7 @@ div.sub-comment {
 }
 
 .TOCLevel1 {
-    padding-left: 5%;
+    padding-left: 0%;
 }
 
 .TOCLevel2 {
@@ -104,17 +104,17 @@ div.sub-comment {
 }
 
 .TOCLevel3 {
-    padding-left: 15%;
+    padding-left: 20%;
 }
 
 .TOCLevel4 {
-    padding-left: 20%;
+    padding-left: 30%;
 }
 
 .category-item {
     list-style: none;
     font-size: 1.7rem;
-    line-height: 2.5rem;
+    line-height: 3.5rem;
 }
 
 .right-info {
@@ -124,16 +124,24 @@ div.sub-comment {
 .category-item-group {
     padding: 5px 20px;
     border-left: 1px solid #DDDDDD;
+    max-height: 600px;
+    overflow: scroll;
+}
+
+.col-md-2 {
+    height: 100%;
 }
 
 #TOC {
-    margin-top: 60%;
+    margin-top: 10%;
 }
 
+p.title,
 div.article h1 ,
 div.article h2 ,
 div.article h3 ,
 div.article h4 {
+    font-family: varela round, "Yuanti SC", Arial, sans-serif;
     color: black;
 }
 
