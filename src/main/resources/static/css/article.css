@@ -5,7 +5,8 @@ div.article p.title {
     color: #333333;
 }
 
-div.article p {
+div.article p,
+div.article table{
     font-size: 1.9rem;
     line-height: 3rem;
 }
@@ -93,6 +94,10 @@ div.sub-comment {
     left: 5%;
     width: 90%;
     position: relative;
+}
+
+a:hover, a:focus {
+    text-decoration: none;
 }
 
 .TOCLevel1 {
