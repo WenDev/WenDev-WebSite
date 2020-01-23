@@ -23,7 +23,7 @@
             <div class="col-md-8">
                 <div class="article" th:each="article : ${page.content}">
                     <div>
-                        <h1>
+                        <h1 style="font-family: varela round, 'Yuanti SC', Arial, sans-serif;">
                             <a th:href="@{'/article/' + ${article.id}}" th:text="${article.title}"></a>
                         </h1>
                     </div>
@@ -42,7 +42,7 @@
                         <span class="info-content" th:each="tag : ${article.tags}" th:text="${tag.name}"></span>
                     </div>
                     <div>
-                        <a class="btn btn-default pull-right">Read More</a>
+                        <a class="btn btn-default pull-right" th:href="@{'/article/' + ${article.id}}">Read More</a>
                     </div>
                 </div>
             </div>

@@ -165,6 +165,7 @@ form a.btn-default.btn-lg {
 }
 
 div.article a.btn-default.btn-lg:active,
+div.article a.btn-default:active,
 input[type="submit"]:hover,
 input[type="submit"]:active,
 form a.btn-default.btn-lg:hover,

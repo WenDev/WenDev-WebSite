@@ -71,6 +71,10 @@ function toc() {
 }
 
 window.onload = function () {
+  let codeBlocks = document.querySelectorAll('pre')
+  for (let i = 0; i < codeBlocks.length; i++) {
+    codeBlocks[i].setAttribute('class', 'prettyprint linenums')
+  }
   toc();
   prettyPrint();
 }

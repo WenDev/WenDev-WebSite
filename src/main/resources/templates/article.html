@@ -38,119 +38,63 @@
             </div>
         </div>
         <!-- Comments -->
-        <div class="comments">
+        <div class="comments" th:fragment="commentList">
             <h1>Comments</h1>
-            <div class="comment">
+            <div class="comment" th:each="comment : ${comments}">
                 <div class="comment-info">
                     <span class="glyphicon glyphicon-comment"></span>
-                    <span class="info-content">Username</span>
+                    <span class="info-content" th:text="${comment.user.nickname}"></span>
                     <span class="glyphicon glyphicon-envelope"></span>
-                    <span class="info-content">wendev1024@icloud.com</span>
+                    <span class="info-content" th:text="${comment.user.email}"></span>
                     <span class="glyphicon glyphicon-calendar"></span>
-                    <span class="info-content">2020-1-1</span>
-                    <span class="info-content"><a href="#">reply</a></span>
-                    <span class="info-content"><a href="#">delete</a></span>
+                    <span class="info-content"
+                          th:text="${#dates.format(comment.createTime, 'yyyy-MM-dd HH:mm')}">
+                    </span>
+                    <span class="info-content">
+                        <a th:onclick="'javascript:reply(' + ${comment.id} + ')'">回复</a>
+                    </span>
+                    <span class="info-content" th:if="${session.userId == 1}">
+                        <a th:href="@{'/comments/delete/' + ${article.id} + '/' + ${comment.id}}">删除</a></span>
                 </div>
-                <div class="comment-content">
-                    中文中文中文
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda corporis doloremque
-                    dolores
-                    ducimus ea eius esse facilis harum laborum laudantium libero nihil, optio porro praesentium,
-                    quidem
-                    ratione sunt suscipit ullam!
+                <div class="comment-content" th:text="${comment.content}">
                 </div>
-            </div>
-            <div class="sub-comments">
-                <div class="sub-comment">
-                    <div class="comment-info">
-                        <span class="glyphicon glyphicon-comment"></span>
-                        <span class="info-content">Username</span>
-                        <span class="glyphicon glyphicon-envelope"></span>
-                        <span class="info-content">wendev1024@icloud.com</span>
-                        <span class="glyphicon glyphicon-calendar"></span>
-                        <span class="info-content">2020-1-1</span>
-                        <span class="info-content"><a href="#">reply</a></span>
-                        <span class="info-content"><a href="#">delete</a></span>
+
+                <div class="sub-comments" th:if="${comment.replyComments.size() > 0}">
+                    <div class="sub-comment" th:each="subcomment : ${comment.replyComments}">
+                        <div class="comment-info">
+                            <span class="glyphicon glyphicon-comment"></span>
+                            <span class="info-content" th:text="${subcomment.user.nickname}"></span>
+                            <span class="glyphicon glyphicon-envelope"></span>
+                            <span class="info-content" th:text="${subcomment.user.email}"></span>
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            <span class="info-content"
+                                  th:text="${#dates.format(subcomment.createTime, 'yyyy-MM-dd HH:mm')}">
+                            </span>
+                            <span class="info-content">
+                                <a th:onclick="'javascript:reply(' + ${subcomment.id} + ')'">
+                                    回复
+                                </a>
+                            </span>
+                            <span class="info-content" th:if="${session.userId == 1}">
+                                <a th:href="@{'/comments/delete/' + ${article.id} + '/' + ${subcomment.id}}">删除</a>
+                            </span>
+                        </div>
+                        <div class="sub-comment-content">
+                            <strong th:text="'@' + ${subcomment.parentComment.user.nickname}"></strong>
+                            <span th:text="${subcomment.content}"></span>
+                        </div>
                     </div>
-                    <div class="sub-comment-content">
-                        <strong>@Username</strong>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad beatae consequatur delectus
-                        dignissimos dolore dolores esse est fugiat harum, itaque magnam maiores maxime, modi
-                        mollitia,
-                        odit quam rerum sapiente unde!
-                    </div>
-                </div>
-                <div class="sub-comment">
-                    <div class="comment-info">
-                        <span class="glyphicon glyphicon-comment"></span>
-                        <span class="info-content">Username</span>
-                        <span class="glyphicon glyphicon-envelope"></span>
-                        <span class="info-content">wendev1024@icloud.com</span>
-                        <span class="glyphicon glyphicon-calendar"></span>
-                        <span class="info-content">2020-1-1</span>
-                        <span class="info-content"><a href="#">reply</a></span>
-                        <span class="info-content"><a href="#">delete</a></span>
-                    </div>
-                    <div class="sub-comment-content">
-                        <strong>@Username</strong>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad beatae consequatur delectus
-                        dignissimos dolore dolores esse est fugiat harum, itaque magnam maiores maxime, modi
-                        mollitia,
-                        odit quam rerum sapiente unde!
-                    </div>
-                </div>
-            </div>
-            <div class="comment">
-                <div class="comment-info">
-                    <span class="glyphicon glyphicon-comment"></span>
-                    <span class="info-content">Username</span>
-                    <span class="glyphicon glyphicon-envelope"></span>
-                    <span class="info-content">wendev1024@icloud.com</span>
-                    <span class="glyphicon glyphicon-calendar"></span>
-                    <span class="info-content">2020-1-1</span>
-                    <span class="info-content"><a href="#">reply</a></span>
-                    <span class="info-content"><a href="#">delete</a></span>
-                </div>
-                <div class="comment-content">
-                    中文中文中文
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda corporis doloremque
-                    dolores
-                    ducimus ea eius esse facilis harum laborum laudantium libero nihil, optio porro praesentium,
-                    quidem
-                    ratione sunt suscipit ullam!
-                </div>
-            </div>
-            <div class="comment">
-                <div class="comment-info">
-                    <span class="glyphicon glyphicon-comment"></span>
-                    <span class="info-content">Username</span>
-                    <span class="glyphicon glyphicon-envelope"></span>
-                    <span class="info-content">wendev1024@icloud.com</span>
-                    <span class="glyphicon glyphicon-calendar"></span>
-                    <span class="info-content">2020-1-1</span>
-                    <span class="info-content"><a href="#">reply</a></span>
-                    <span class="info-content"><a href="#">delete</a></span>
-                </div>
-                <div class="comment-content">
-                    中文中文中文
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda corporis doloremque
-                    dolores
-                    ducimus ea eius esse facilis harum laborum laudantium libero nihil, optio porro praesentium,
-                    quidem
-                    ratione sunt suscipit ullam!
                 </div>
             </div>
         </div>
-        <form>
-            <div class="form-group">
+        <form th:action="@{'/comments/' + ${article.id}}" method="post">
+            <div class="form-group" id="comment-form">
                 <h1>Post a comment</h1>
                 <label for="comment"></label>
-                <textarea id="comment" rows="10" class="comment-area form-control"
+                <textarea id="comment" rows="10" class="comment-area form-control" name="content"
                           placeholder="Comment"></textarea>
             </div>
-            <a type="submit" class="btn btn-default pull-right submit-btn">
-                Submit
-            </a>
+            <input type="submit" class="btn btn-default pull-right submit-btn" value="Submit">
         </form>
         <!-- End Comments -->
     </div>
@@ -178,23 +122,17 @@
 <div th:replace="components/footer :: footer" style="margin-top: 100px"></div>
 <!-- End Footer -->
 
-<script src="/editor-md/lib/marked.min.js"></script>
-<script src="/editor-md/lib/prettify.min.js"></script>
-<script src="/editor-md/lib/raphael.min.js"></script>
-<script src="/editor-md/lib/underscore.min.js"></script>
-<script src="/editor-md/lib/sequence-diagram.min.js"></script>
-<script src="/editor-md/lib/flowchart.min.js"></script>
-<script src="/editor-md/lib/jquery.flowchart.min.js"></script>
-<script src="/editor-md/editormd.js"></script>
 <script>
-  editormd.markdownToHTML("md", {
-    htmlDecode      : "style,script,iframe",
-    emoji           : true,
-    taskList        : true,
-    tex             : true,  // 默认不解析
-    flowChart       : true,  // 默认不解析
-    sequenceDiagram : true  // 默认不解析
-  });
+  function reply (commentId) {
+    let coment_form = document.getElementById('comment-form')
+    let textarea = document.querySelector('textarea')
+    let ipt = document.createElement('input')
+    ipt.setAttribute('name', 'parentId')
+    ipt.setAttribute('value', commentId)
+    ipt.setAttribute('type', 'hidden')
+    textarea.setAttribute('placeholder', 'Replying......')
+    coment_form.appendChild(ipt)
+  }
 </script>
 </body>
 </html>

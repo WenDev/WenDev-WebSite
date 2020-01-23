@@ -37,7 +37,7 @@ public class ArticleController {
 
     @GetMapping(value = {""})
     public String articleManagementPage(Model model, ArticleVO article,
-                                        @PageableDefault(size = 2, sort = {"updateTime"},
+                                        @PageableDefault(size = 10, sort = {"updateTime"},
                                                 direction = Sort.Direction.DESC) Pageable pageable) {
         model.addAttribute("page", articleService.list(pageable, article));
         return "article_manage";
@@ -45,7 +45,7 @@ public class ArticleController {
 
     @PostMapping(value = {"/search"})
     public String articleManagementPageSearch(Model model, ArticleVO article,
-                                        @PageableDefault(size = 2, sort = {"updateTime"},
+                                        @PageableDefault(size = 10, sort = {"updateTime"},
                                                 direction = Sort.Direction.DESC) Pageable pageable) {
         model.addAttribute("page", articleService.list(pageable, article));
         return "article_manage::articleList";

@@ -150,6 +150,10 @@ div.article h4 {
     color: black;
 }
 
+.info-content a:hover {
+    cursor: pointer;
+}
+
 div.article a#TOC1 ,
 div.article a#TOC2 ,
 div.article a#TOC3 ,

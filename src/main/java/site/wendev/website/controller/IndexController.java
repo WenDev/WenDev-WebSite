@@ -9,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import site.wendev.website.entities.Comment;
 import site.wendev.website.service.ArticleService;
+import site.wendev.website.service.CommentService;
 import site.wendev.website.service.TagService;
 import site.wendev.website.service.TypeService;
 import site.wendev.website.vo.ArticleVO;
@@ -29,6 +31,9 @@ public class IndexController {
 
     @Autowired
     private TagService tagService;
+
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("/")
     public String index(Model model, ArticleVO article,
@@ -50,6 +55,7 @@ public class IndexController {
 
     @GetMapping("/article/{id}")
     public String article(@PathVariable Long id, Model model) {
+        model.addAttribute("comments", commentService.listByArticleId(id));
         model.addAttribute("article", articleService.findAndConvert(id));
         return "article";
     }

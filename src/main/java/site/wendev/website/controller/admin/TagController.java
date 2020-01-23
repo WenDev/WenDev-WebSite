@@ -21,7 +21,7 @@ public class TagController {
     private TagService tagService;
 
     @GetMapping(value = {"", "/add"})
-    public String tagManagePage(@PageableDefault(size = 5, sort = {"id"}, direction = Sort.Direction.ASC)
+    public String tagManagePage(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
                                          Pageable pageable, Model model) {
         // 添加标签列表数据
         model.addAttribute("page", tagService.listTag(pageable));

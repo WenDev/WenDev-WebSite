@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import site.wendev.website.dao.ArticleRepository;
 import site.wendev.website.entities.Article;
 import site.wendev.website.entities.Type;
@@ -33,6 +34,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    @Transactional
     public Article findAndConvert(Long id) {
         var articleOptional = articleRepository.findById(id);
         if (articleOptional.isEmpty()) {
@@ -43,6 +45,8 @@ public class ArticleServiceImpl implements ArticleService {
             BeanUtils.copyProperties(article1, article);
             var content = article.getContent();
             article.setContent(MarkdownUtils.markdown2Html(content));
+
+            articleRepository.updateViews(id);
 
             return article;
         }
@@ -80,11 +84,13 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    @Transactional
     public Article add(Article article) {
         return articleRepository.save(article);
     }
 
     @Override
+    @Transactional
     public Article modify(Long id, Article article) {
         var articleOptional = articleRepository.findById(id);
         if (articleOptional.isEmpty()) {
@@ -101,6 +107,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         articleRepository.deleteById(id);
     }
