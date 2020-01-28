@@ -27,40 +27,31 @@
                 <!-- Drop Down Menu -->
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                        <a href="/" class="dropdown-toggle" data-toggle="dropdown"
                            role="button" aria-haspopup="true" aria-expanded="false">
                             Article
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">
+                                <a th:href="@{/type}">
                                 <span class="glyphicon glyphicon-list"
                                       style="margin: 5px"></span>
                                     Types
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a th:href="@{/tag}">
                                 <span class="glyphicon glyphicon-tags"
                                       style="margin: 5px"></span>
                                     Tags
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a th:href="@{/archive}">
                                 <span class="glyphicon glyphicon-folder-open"
                                       style="margin: 5px"></span>
                                     Archive
-                                </a>
-                            </li>
-
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="#">
-                                <span class="glyphicon glyphicon-link"
-                                      style="margin: 5px"></span>
-                                    Friends
                                 </a>
                             </li>
                         </ul>
@@ -145,7 +136,7 @@
                 <!-- End Drop Down Menu -->
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" class="dropdown-toggle">About Me</a></li>
+                    <li><a href="/about" class="dropdown-toggle">About Me</a></li>
                 </ul>
 
                 <!-- NavBar Search -->

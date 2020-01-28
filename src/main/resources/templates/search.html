@@ -3,6 +3,7 @@
 <head th:replace="components/head :: head(~{:: title}, ~{:: link})">
     <title>江文|WenDev</title>
     <link rel="stylesheet" th:href="@{css/wen.css}">
+    <link rel="stylesheet" th:href="@{/css/type.css}">
 </head>
 <body>
 
@@ -29,7 +30,7 @@
                     <div class="article" th:each="article : ${page.content}">
                         <div>
                             <h1>
-                                <a href="#" th:text="${article.title}"></a>
+                                <a th:href="@{'/article/' + ${article.id}}" th:text="${article.title}"></a>
                             </h1>
                         </div>
                         <div>
@@ -48,7 +49,7 @@
                             <span class="info-content" th:each="tag : ${article.tags}" th:text="${tag.name}"></span>
                         </div>
                         <div>
-                            <a class="btn btn-default pull-right">Read More</a>
+                            <a th:href="@{'/article/' + ${article.id}}" class="btn btn-default pull-right">Read More</a>
                         </div>
                     </div>
                 </div>

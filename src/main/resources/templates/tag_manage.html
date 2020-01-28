@@ -67,22 +67,6 @@
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <!-- 当前页面小于等于4 -->
-                <li class="page-item" th:if="${(page.number + 1) le 4}"
-                    th:each="i : ${#numbers.sequence(0, page.totalPages)}"
-                    th:classappend="${(page.number + 1) eq i + 1} ? 'active' : ''">
-                    <a th:href="@{/admin/tag(page=${i})}">
-                        <span data-th-text="${i + 1}"></span>
-                    </a>
-                </li>
-
-                <!--                <li class="active">-->
-                <!--                    <span>1</span>-->
-                <!--                </li>-->
-                <!--                <li><a href="#">2</a></li>-->
-                <!--                <li><a href="#">3</a></li>-->
-                <!--                <li><a href="#">4</a></li>-->
-                <!--                <li><a href="#">5</a></li>-->
                 <li class="disabled" th:if="${page.last == true}">
                 <span>
                     <span aria-hidden="true">&raquo;</span>

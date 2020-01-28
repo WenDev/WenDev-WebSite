@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>site.wendev</groupId>
 	<artifactId>website</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-RELEASE</version>
 	<name>website</name>
 	<description>JiangWen's personal website.</description>
 

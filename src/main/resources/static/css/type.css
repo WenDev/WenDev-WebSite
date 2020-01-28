@@ -8,6 +8,32 @@
     border: none;
 }
 
+.label-active a,
+.label-active a:visited {
+    color: white !important;
+}
+
+.label-active a:hover,
+.label-active a:active {
+    color: white !important;
+    text-decoration: underline !important;
+}
+
+h1 {
+    font-family: varela round, "Yuanti SC", "Heiti SC", Arial, sans-serif;
+}
+
+.label a,
+.label a:visited{
+    color: #333333;
+}
+
+.label a:hover,
+.label a:active {
+    color: #333333;
+    text-decoration: underline;
+}
+
 .label-active .badge {
     background-color: white;
     color: #333333;

@@ -78,6 +78,10 @@ a:focus {
     text-decoration: underline;
 }
 
+.col-md-2 strong a {
+    color: #333333;
+}
+
 .article {
     border-bottom: 1px solid #DDDDDD;
     padding: 10px 30px 50px 30px;

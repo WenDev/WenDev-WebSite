@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
     <title>Error</title>
+    <link rel="stylesheet" th:href="@{/css/wen.css}">
 </head>
 <body>
-<h1>Error Info:</h1>
-<div>
-    <div th:text="'Request URL: ' + ${url}"></div>
-    <div th:text="'Exception Message: ' + ${exception}"></div>
+
+<!-- Header -->
+<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
+<!-- End Header -->
+
+<!-- Content -->
+<div class="container">
+    <div class="text-center">
+        <h1 class="text-center" style="font-family: 'Varela Round', 'Yuanti SC', sans-serif">
+            不好意思，服务器出了点小差，请联系我报告这个Bug吧。</h1>
+        <p class="text-center" th:text="'记得带上这个出了错的URL：' + ${url}"></p>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="components/footer :: footer"></div>
+    <!-- End Footer -->
+
 </div>
+<!-- End Content -->
 </body>
 </html>

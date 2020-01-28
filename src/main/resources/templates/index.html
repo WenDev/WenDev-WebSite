@@ -56,7 +56,7 @@
                     <ul class="list-group">
                         <li class="list-group-item" th:each="type : ${types}">
                             <span class="glyphicon glyphicon-arrow-right"></span>
-                            <a href="#" th:text="${type.name}"></a>
+                            <a th:href="@{'/type/' + ${type.id}}" th:text="${type.name}"></a>
                             <span class="badge" th:text="${type.articles.size()}"></span>
                         </li>
                     </ul>
@@ -67,8 +67,10 @@
                     <h4 class="right-info">Top 10 Tags</h4>
                     <div>
                         <span class="label label-default" th:each="tag : ${tags}">
-                            <strong th:text="${tag.name}">Java</strong>
-                            <span th:text="${tag.articles.size()}">10</span>
+                            <strong>
+                                <a th:href="@{'/tag/' + ${tag.id}}" th:text="${tag.name}"></a>
+                            </strong>
+                            <span class="badge" th:text="${tag.articles.size()}">10</span>
                         </span>
                     </div>
                 </div>
@@ -97,22 +99,6 @@
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <!-- 当前页面小于等于4 -->
-            <li class="page-item" th:if="${(page.number + 1) le 4}"
-                th:each="i : ${#numbers.sequence(1, page.totalPages)}"
-                th:classappend="${(page.number + 1) eq i} ? 'active' : ''">
-                <a th:href="@{/(page=${i - 1})}">
-                    <span data-th-text="${i}"></span>
-                </a>
-            </li>
-
-            <!--                <li class="active">-->
-            <!--                    <span>1</span>-->
-            <!--                </li>-->
-            <!--                <li><a href="#">2</a></li>-->
-            <!--                <li><a href="#">3</a></li>-->
-            <!--                <li><a href="#">4</a></li>-->
-            <!--                <li><a href="#">5</a></li>-->
             <li class="disabled" th:if="${page.last == true}">
                 <span>
                     <span aria-hidden="true">&raquo;</span>

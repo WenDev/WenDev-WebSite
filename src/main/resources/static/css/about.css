@@ -10,6 +10,10 @@
     flex-direction: column;
 }
 
+h1 {
+    font-family: varela round, "Yuanti SC", "Heiti SC", Arial, sans-serif;
+}
+
 blockquote {
     padding: 10px 20px;
     margin: 0 0 20px;

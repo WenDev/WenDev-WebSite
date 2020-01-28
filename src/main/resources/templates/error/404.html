@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
     <title>404</title>
+    <link rel="stylesheet" th:href="@{/css/wen.css}">
 </head>
 <body>
-    <h1>404</h1>
+
+<!-- Header -->
+<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
+<!-- End Header -->
+
+<!-- Content -->
+<div class="container">
+    <div class="text-center">
+        <h1 class="text-center">404</h1>
+        <h1 class="text-center" style="font-family: 'Varela Round', 'Yuanti SC', sans-serif">
+            什么也没找到，是不是请求的路径搞错了？再确认一下吧？</h1>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="components/footer :: footer"></div>
+    <!-- End Footer -->
+
+</div>
+<!-- End Content -->
 </body>
 </html>

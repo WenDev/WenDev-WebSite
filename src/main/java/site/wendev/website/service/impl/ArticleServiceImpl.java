@@ -15,13 +15,8 @@ import site.wendev.website.service.ArticleService;
 import site.wendev.website.util.MarkdownUtils;
 import site.wendev.website.vo.ArticleVO;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import javax.persistence.criteria.*;
+import java.util.*;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -81,6 +76,29 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Page<Article> list(Pageable pageable) {
         return articleRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Article> list(Long tagId, Pageable pageable) {
+        return articleRepository.findAll(new Specification<Article>() {
+            // 关联表查询：根据Tag查询数据
+            @Override
+            public Predicate toPredicate(Root<Article> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                Join join = root.join("tags");
+                return criteriaBuilder.equal(join.get("id"), tagId);
+            }
+        }, pageable);
+    }
+
+    @Override
+    public Map<String, List<Article>> archiveArticle() {
+        List<String> years = articleRepository.findByGroupYear();
+        Map<String, List<Article>> map = new HashMap<>();
+        for (var year : years) {
+            map.put(year, articleRepository.findByYear(year));
+        }
+
+        return map;
     }
 
     @Override
