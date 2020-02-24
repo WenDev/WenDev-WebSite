@@ -1,43 +1,43 @@
-<!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
-    <title>归档</title>
-    <link rel="stylesheet" th:href="@{css/wen.css}">
-    <link rel="stylesheet" th:href="@{css/archive.css}">
+<!doctype html>
+<!--[if IE 7 ]>
+<html lang="zh-cn" class="isie ie7 oldie no-js" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if IE 8 ]>
+<html lang="zh-cn" class="isie ie8 oldie no-js" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if IE 9 ]>
+<html lang="zh-cn" class="isie ie9 no-js" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="zh-cn" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<head th:replace="_fragments/header :: head(~{:: title})">
+    <title>归档 ｜ 江文的后端技术小站</title>
 </head>
-<body>
 
-<!-- Header -->
-<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
-<!-- End Header -->
-
-<!-- Content -->
-<div class="container">
-    <!-- Body -->
-    <div class="container">
-        <div class="col-md-12">
-            <div th:each="item : ${archiveMap}">
-                <h1 th:text="${item.key}">2020-1</h1>
-                <div class="archive-article-group">
-                    <div class="archive-article" th:each="article : ${item.value}">
+<body class="landing">
+<header th:replace="_fragments/nav :: navbar-index"></header>
+<div id="#top"></div>
+<section id="banner">
+    <h2>归档.WenDev</h2>
+    <p>持节云中，何日遣冯唐？</p>
+</section>
+<!--About-->
+<section id="main" class="container">
+    <section class="box special">
+        <div th:each="item : ${archiveMap}">
+            <h1 th:text="${item.key}">2020-1</h1>
+            <div class="archive-article-group">
+                <div class="archive-article" th:each="article : ${item.value}">
                         <span class="archive-article-title">
                             <a th:href="@{'/article/' + ${article.id}}" th:text="${article.title}">文章1</a>
                         </span>
-                        <span class="archive-article-date">
-                            <span class="glyphicon glyphicon-calendar"></span>
+                    <span class="archive-article-date">
                             <span class="info-content" th:text="${#dates.format(article.createTime, 'yyyy-MM-dd')}"></span>
                         </span>
-                    </div>
                 </div>
             </div>
         </div>
-        <!-- End Body -->
-    </div>
+    </section>
+</section>
 
-    <!-- Footer -->
-    <div th:replace="components/footer :: footer"></div>
-    <!-- End Footer -->
-</div>
-<!-- End Content -->
+<footer th:replace="_fragments/footer :: footer"></footer>
 </body>
 </html>

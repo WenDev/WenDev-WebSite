@@ -7,7 +7,7 @@
 </head>
 <body>
 <!-- Header -->
-<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
+<header th:replace="_fragments/nav :: navbar"></header>
 <!-- End Header -->
 
 <div class="container-fluid">
@@ -49,14 +49,14 @@
 
 <script th:src="@{/editor-md/editormd.min.js}"></script>
 <script type="text/javascript">
-    $(function () {
-        var editor = editormd("editor", {
-            width: "90%",
-            height: "800px",
-            // markdown: "xxxx",     // dynamic set Markdown text
-            path: "/editor-md/lib/"  // Autoload modules mode, codemirror, marked... dependents libs path
-        });
+  $(function () {
+    var editor = editormd("editor", {
+      width: "90%",
+      height: "800px",
+      // markdown: "xxxx",     // dynamic set Markdown text
+      path: "/editor-md/lib/"  // Autoload modules mode, codemirror, marked... dependents libs path
     });
+  });
 </script>
 </body>
 </html>

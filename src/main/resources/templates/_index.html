@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
+    <title>江文|WenDev</title>
+    <link rel="stylesheet" th:href="@{css/wen.css}">
+</head>
+<body>
+
+<!-- Header -->
+<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
+<!-- End Header -->
+
+<!-- Content -->
+<div class="container-fluid">
+    <!-- Body -->
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <!-- Margin-Left -->
+            <div class="col-md-1" style="background-color: transparent; height: 200px;"></div>
+            <!-- End Margin-Left -->
+
+            <!-- Articles -->
+            <div class="col-md-8">
+                <div class="article" th:each="article : ${page.content}">
+                    <div>
+                        <h1 style="font-family: varela round, 'Yuanti SC', Arial, sans-serif;">
+                            <a th:href="@{'/article/' + ${article.id}}" th:text="${article.title}"></a>
+                        </h1>
+                    </div>
+                    <div>
+                        <p th:text="|${#strings.abbreviate(article.content, 400)}|">
+                        </p>
+                    </div>
+                    <div class="article-info">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        <span class="info-content" th:text="${#dates.format(article.updateTime, 'yyyy-MM-dd')}"></span>
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        <span class="info-content" th:text="${article.type.name}"></span>
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <span class="info-content" th:text="${article.views}"></span>
+                        <span class="glyphicon glyphicon-tag"></span>
+                        <span class="info-content" th:each="tag : ${article.tags}" th:text="${tag.name}"></span>
+                    </div>
+                    <div>
+                        <a class="btn btn-default pull-right" th:href="@{'/article/' + ${article.id}}">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Articles -->
+
+            <!-- Content-Right -->
+            <div class="col-md-2">
+                <!-- Top Categories -->
+                <div>
+                    <h4 class="right-info">Top 5 Types</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item" th:each="type : ${types}">
+                            <span class="glyphicon glyphicon-arrow-right"></span>
+                            <a th:href="@{'/type/' + ${type.id}}" th:text="${type.name}"></a>
+                            <span class="badge" th:text="${type.articles.size()}"></span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End top categories -->
+                <!-- Top Tags -->
+                <div>
+                    <h4 class="right-info">Top 10 Tags</h4>
+                    <div>
+                        <span class="label label-default" th:each="tag : ${tags}">
+                            <strong>
+                                <a th:href="@{'/tag/' + ${tag.id}}" th:text="${tag.name}"></a>
+                            </strong>
+                            <span class="badge" th:text="${tag.articles.size()}">10</span>
+                        </span>
+                    </div>
+                </div>
+                <!-- End Top Tags -->
+            </div>
+            <!-- End Content-Right -->
+
+            <!-- Margin-Right -->
+            <div class="col-md-1" style="background-color: transparent; height: 200px;"></div>
+            <!-- End Margin-Right -->
+        </div>
+    </div>
+    <!-- End Body -->
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation" class="col-md-offset-4 col-lg-offset-4col-xl-offset-4">
+        <ul class="pagination">
+            <li class="disabled" th:if="${page.first == true}">
+                <span>
+                    <span aria-hidden="true">&laquo;</span>
+                </span>
+            </li>
+            <li th:if="${page.first == false}">
+                <a th:href="@{/(page=${page.number} - 1)}" aria-label="Next"
+                   onclick="page(this)" th:attr="data-page=${page.number - 1}">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="disabled" th:if="${page.last == true}">
+                <span>
+                    <span aria-hidden="true">&raquo;</span>
+                </span>
+            </li>
+            <li th:if="${page.last == false}">
+                <a th:href="@{/(page=${page.number} + 1)}" aria-label="Next"
+                   onclick="page(this)" th:attr="data-page=${page.number + 1}">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- End Pagination -->
+
+<!-- Footer -->
+    <div th:replace="components/footer :: footer"></div>
+<!-- End Footer -->
+
+</div>
+<!-- End Content -->
+</body>
+</html>

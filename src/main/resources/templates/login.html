@@ -1,49 +1,49 @@
-<!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
-    <title>登录</title>
-    <link rel="stylesheet" th:href="@{css/wen.css}">
+<!doctype html>
+<!--[if IE 7 ]>
+<html lang="zh-cn" class="isie ie7 oldie no-js" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if IE 8 ]>
+<html lang="zh-cn" class="isie ie8 oldie no-js" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if IE 9 ]>
+<html lang="zh-cn" class="isie ie9 no-js" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="zh-cn" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<head th:replace="_fragments/header :: head(~{:: title})">
+    <title>登录 ｜ 江文的后端技术小站</title>
 </head>
-<body>
-<!-- Header -->
-<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
-<!-- End Header -->
 
-<!-- Content -->
-<div class="container">
-    <!-- Body -->
-    <div class="container">
-        <div class="col-md-12">
-            <form style="margin-bottom: 100px;" action="/login" method="post">
-                <h1>登录  <small>Login</small></h1>
-                <div style="margin-bottom: 30px;">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input id="username" name="username" type="text" class="form-control"
-                               placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input id="password" name="password" type="password" class="form-control"
-                               placeholder="Password">
-                    </div>
+<body class="landing">
+<header th:replace="_fragments/nav :: navbar-index"></header>
+<div id="#top"></div>
+<section id="banner">
+    <h2>登录.WenDev</h2>
+    <p>持节云中，何日遣冯唐？</p>
+</section>
+<!--About-->
+<section id="main" class="container">
+    <section class="box">
+        <form method="post" action="/login">
+            <div class="row uniform half ollapse-at-2">
+                <div class="6u">
+                    <input name="username" id="username" placeholder="用户名" type="text"/>
                 </div>
-                <input type="submit" class="btn btn-default btn-lg" value="Submit">
-                <div class="alert alert-danger" role="alert"
-                     th:if="${errInfo != null}" th:text="${errInfo}"></div>
-                <div style="font-size: 1.8rem; margin-top: 30px;">
-                    <a th:href="@{/register}">没有账号？点此注册</a>
+                <div class="6u">
+                    <input name="password" id="password" placeholder="密码" type="password"/>
                 </div>
-            </form>
-        </div>
-    </div>
-    <!-- End Body -->
+            </div>
+            <div class="row uniform">
+                <div class="12u">
+                    <p th:if="${errInfo != null}" th:text="'登录失败：' + ${errInfo}"></p>
+                    <ul class="actions">
+                        <li><input type="submit" value="登录" /></li>
+                        <li><a href="/register" class="button alt">没有账号？点我注册</a></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </section>
+</section>
 
-    <!-- Footer -->
-    <div th:replace="components/footer :: footer"></div>
-    <!-- End Footer -->
-
-</div>
-<!-- End Content -->
+<footer th:replace="_fragments/footer :: footer"></footer>
 </body>
 </html>

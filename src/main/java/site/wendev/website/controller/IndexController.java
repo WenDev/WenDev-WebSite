@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import site.wendev.website.entities.Comment;
 import site.wendev.website.service.ArticleService;
 import site.wendev.website.service.CommentService;
 import site.wendev.website.service.TagService;

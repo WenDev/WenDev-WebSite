@@ -35,7 +35,7 @@ public class TagDisplayController {
         // 完成类型列表与文章的分页查询
         model.addAttribute("tags", tags);
         model.addAttribute("page", articleService.list(id, pageable));
-        model.addAttribute("activeTypeId", id);
+        model.addAttribute("activeTagId", id);
         return "tag";
     }
 }

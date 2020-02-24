@@ -1,78 +1,76 @@
-<!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
-    <title>关于我</title>
-    <link rel="stylesheet" href="/css/about.css">
-    <link rel="stylesheet" href="/css/wen.css">
+<!doctype html>
+<!--[if IE 7 ]>
+<html lang="zh-cn" class="isie ie7 oldie no-js" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if IE 8 ]>
+<html lang="zh-cn" class="isie ie8 oldie no-js" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if IE 9 ]>
+<html lang="zh-cn" class="isie ie9 no-js" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="zh-cn" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<head th:replace="_fragments/header :: head(~{:: title})">
+    <title>关于我 | 江文的后端技术小站</title>
 </head>
 <body>
-
-<!-- Header -->
-<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
-<!-- End Header -->
+<header th:replace="_fragments/nav :: navbar"></header>
 
 <!-- Content -->
-<div class="container">
-    <!-- Body -->
-    <div class="container">
-        <div class="col-md-12">
-            <h1>关于我 <small>About Me</small></h1>
-            <img src="/img/头像.jpg" alt="头像" height="150" width="150" class="header-img">
-            <blockquote>不想当切图仔的接口仔不是好架构师。</blockquote>
-            <p>江文（JiangWen/WenDev），一个刚入后端不到一年的辣鸡接口仔。</p>
-            <p>山东科技大学CS专业本科大一（大二）学生。</p>
-            <p>Java/后端修行者，一直在学习中。</p>
-            <p>偶尔搞搞前端，但是患有重度GUI恐惧症，极其反感写界面，尤其是需要兼容适配的。
-                <strike>写CSS和调试JS时会反复死亡。</strike>
-            </p>
-            <p>曾经打过些CTF，走的Web方向，现已退坑且以后不会回坑，但相关文章还留在这里供大家参考、阅读。</p>
-            <p>数学建模门外汉，MATLAB用不来，都是用Python打比赛。算法也研究的不多。</p>
-            <p>轨道交通迷，喜欢普铁和7053这样的老火车，以及比较奇怪的地铁站。可惜拍照技术不达标，出去运转的时间也很少。</p>
-            <p>欢迎赐教，一起学习、进步。</p>
-
-            <h1>关于wendev.site <small>About My Site</small></h1>
-            <p><strong>文章可以自由转载，但要记得带上我的名字或者这个网站的链接，感谢支持。</strong></p>
-            <p>Current Version: 1.0.0</p>
-            <p>这里是我的个人网站，会记录我的学习路线、总结，当然也会写一些教程和生活的感悟。</p>
-            <p>如果发现Bug，欢迎与我交流或去GitHub上的代码仓库提Issue，链接就在下面，当然有什么好的想法也可以提出。不胜感激。</p>
-            <p>如果觉得阅读体验不好也可以移步简书，链接也在下面。</p>
-            <p>这是第一次做一个完整、可上线的Java后端项目，希望以此为开端，可以接到更多、更大的项目。</p>
-            <p><strike>其实写它只是觉得WP等PHP的博客框架不安全，Hexo部署太麻烦，其他的不好用，就干脆自己写一个好用的。</strike></p>
-
-            <h1>我的特长</h1>
-            <ul>
-                <li>开发Bug</li>
-                <li>一行代码报三个错</li>
-                <li>面向Spring编程</li>
-                <li>在调试时将断点打在<strike>错误</strike>正确的位置</li>
-                <li>Mock的时候调用真正的接口</li>
-                <li>使用DELETE语句时不使用限定词WHERE和LIMIT</li>
-                <li><strike>错误</strike>正确地调用其他人写的接口</li>
-                <li>不写注释</li>
-                <li>不写单元测试</li>
-            </ul>
-            <h1>2020年的flag</h1>
-            <ul>
-                <li>系统地总结一下Java的基础知识，可以的话出个教程</li>
-                <li>每天刷一道LeetCode</li>
-                <li>看懂Spring源码</li>
-                <li>搞懂Redis和缓存</li>
-                <li>搞懂流、IO、NIO</li>
-                <li>学一下Golang（不能吊死在Java一棵树上）</li>
-                <li>学一下Qt</li>
-                <li>学会Kafka或者其他消息队列并看懂源码</li>
-                <li>研究一下gRPC，做个跨语言的微服务项目</li>
-                <li>多做几个后端项目</li>
-                <li>理解并运用常见的设计模式</li>
-            </ul>
+<section id="main" class="container">
+    <!-- Articles and Comments -->
+    <header>
+        <h2>江文的后端技术小站</h2>
+        <p>风有风的自由，我有我的追求。</p>
+    </header>
+    <div class="row">
+        <div class="12u">
+            <section class="box">
+                <h1>友情链接</h1>
+                <p>注：友情链接的排序按照友情链接的添加顺序</p>
+                <ul>
+                    <li><a href="http://tianhang28.cn/">水浅小庙</a></li>
+                    <li><a href="http://blog.keysking.com/">Keysking</a></li>
+                    <li><a href="http://n4tsu.top/">N4tsu</a></li>
+                    <li><a href="http://liul14n.top/">Liul14n</a></li>
+                    <li><a href="https://alicejthelast.lofter.com/">Oralear</a>  感谢大触贡献本站的头图</li>
+                    <li><a href="http://blog.char0n.com">Anzoo</a></li>
+                </ul>
+                <h1>关于我</h1>
+                <blockquote>不想当切图仔的crud仔不是好架构师。</blockquote>
+                <p>
+                    我是江文，一个满脑子都是不切实际的幻想的人。<br>
+                    山东科技大学CS专业本科大一（大二）在读，坐标山东青岛，Java/后端开发修行者，每天都在学习与实践中。<br>
+                    一个开发不到一年的辣鸡crud仔。虽然偶尔搞搞前端，但是还是<strike>珍爱生命远离前端</strike>，写写JS和Vue还行，CSS那真的是反人类的东西，碰都不想碰……<br>
+                    <strike>各位前端大哥们请放下你们手中的砖头，小弟我错了（顶锅逃）</strike><br>
+                    假的轨道交通迷，喜欢7053一样的老火车，还有各种奇怪的地铁站。出去运转/拍车的时间超级少。<br>
+                    希望自己能成为一位在这个Java后端开发者遍地都是的时代中的一个与众不同的Java开发者。
+                </p>
+                <h2>Concat Me</h2>
+                <ul>
+                    <li><strong>QQ： </strong>1686799346</li>
+                    <li><strong>WeChat： </strong>CV10236516</li>
+                    <li><strong>E-mail： </strong>wendev1024@icloud.com</li>
+                    <li><strong>GitHub： </strong><a href="https://github.com/WenDev">WenDev</a></li>
+                    <li><strong>简书： </strong><a href="https://www.jianshu.com/u/dc63550214af">__江文__</a></li>
+                </ul>
+                <h1>关于wendev.site</h1>
+                <p>
+                    这里是我的个人网站，使用<code>Spring Boot</code>开发，所有后端开发工作均由本人完成。<br>
+                    本站已在GitHub上开源并持续维护中，欢迎Star和Fork～感激不尽！地址在这：<a href="https://github.com/WenDev/WenDev-WebSite">源码地址</a><br>
+                    如果发现Bug或者莫名其妙就500了，欢迎在GitHub上提Issue，有什么好的想法也欢迎提交Pull Request。
+                </p>
+                <h3>关于经常被问到的一个小问题：为什么要自己造轮子而不用现成的框架</h3>
+                <p>
+                    很简单：程序员的哲学不就是什么用着不顺手就自己写什么嘛。既然其他的博客框架和博客网站用着不顺手，那就自己写一个用着顺手的吧，这样需要什么都可以自己做，不求人。
+                </p>
+            </section>
         </div>
     </div>
-    <!-- End Body -->
-
-    <!-- Footer -->
-    <div th:replace="components/footer :: footer"></div>
-    <!-- End Footer -->
-</div>
+</section>
 <!-- End Content -->
+
+<!-- Footer -->
+<div th:replace="_fragments/footer :: footer"></div>
+<!-- End Footer -->
+
 </body>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
+    <title>登录</title>
+    <link rel="stylesheet" th:href="@{css/wen.css}">
+</head>
+<body>
+<!-- Header -->
+<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
+<!-- End Header -->
+
+<!-- Content -->
+<div class="container">
+    <!-- Body -->
+    <div class="container">
+        <div class="col-md-12">
+            <form style="margin-bottom: 100px;" action="/login" method="post">
+                <h1>登录  <small>Login</small></h1>
+                <div style="margin-bottom: 30px;">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" name="username" type="text" class="form-control"
+                               placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" class="form-control"
+                               placeholder="Password">
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-default btn-lg" value="Submit">
+                <div class="alert alert-danger" role="alert"
+                     th:if="${errInfo != null}" th:text="${errInfo}"></div>
+                <div style="font-size: 1.8rem; margin-top: 30px;">
+                    <a th:href="@{/register}">没有账号？点此注册</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- End Body -->
+
+    <!-- Footer -->
+    <div th:replace="components/footer :: footer"></div>
+    <!-- End Footer -->
+
+</div>
+<!-- End Content -->
+</body>
+</html>

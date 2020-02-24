@@ -1,28 +1,38 @@
-<!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
-    <title>500</title>
-    <link rel="stylesheet" th:href="@{/css/wen.css}">
+<!doctype html>
+<!--[if IE 7 ]>
+<html lang="zh-cn" class="isie ie7 oldie no-js" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if IE 8 ]>
+<html lang="zh-cn" class="isie ie8 oldie no-js" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if IE 9 ]>
+<html lang="zh-cn" class="isie ie9 no-js" xmlns:th="http://www.thymeleaf.org"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="zh-cn" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<head th:replace="_fragments/header :: head(~{:: title})">
+    <title>500 | 江文的后端技术小站</title>
 </head>
 <body>
-
-<!-- Header -->
-<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
-<!-- End Header -->
+<header th:replace="_fragments/nav :: navbar"></header>
 
 <!-- Content -->
-<div class="container">
-    <div class="text-center">
-        <h1 class="text-center">500</h1>
-        <h1 class="text-center" style="font-family: 'Varela Round', 'Yuanti SC', sans-serif">
-            不好意思，服务器出了点小差，请联系我报告这个Bug吧。</h1>
+<section id="main" class="container">
+    <!-- Articles and Comments -->
+    <header>
+        <h2>500</h2>
+        <p>500 Internal Server Error</p>
+    </header>
+    <div class="row">
+        <div class="12u">
+            <section class="box special">
+                <h2>不好意思，服务器出了点小差，请联系我报告这个Bug吧。</h2>
+            </section>
+        </div>
     </div>
-
-    <!-- Footer -->
-    <div th:replace="components/footer :: footer"></div>
-    <!-- End Footer -->
-
-</div>
+</section>
 <!-- End Content -->
+
+<!-- Footer -->
+<div th:replace="_fragments/footer :: footer"></div>
+<!-- End Footer -->
 </body>
 </html>

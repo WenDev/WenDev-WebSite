@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header id="header" class="skel-layers-fixed" th:fragment="navbar">
+    <h1><a th:href="@{/}">江文.WenDev</a></h1>
+    <nav id="nav">
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li>
+                <a href="" class="icon fa-angle-down">Articles</a>
+                <ul>
+                    <li><a href="/search">Search</a></li>
+                    <li><a href="/type">Type</a></li>
+                    <li><a href="/tag">Tag</a></li>
+                    <li><a href="/archive">Archive</a></li>
+                </ul>
+            </li>
+            <li th:if="${session.userId == 1}">
+                <a href="" class="icon fa-angle-down">Manage</a>
+                <ul>
+                    <li th:if="${session.userId == 1}">
+                        <a th:href="@{/admin/article/add}">
+                            Add
+                        </a>
+                    </li>
+                    <li th:if="${session.userId == 1}">
+                        <a th:href="@{/admin/article}">
+                            Article Management
+                        </a>
+                    </li>
+                    <li th:if="${session.userId == 1}">
+                        <a th:href="@{/admin/user}">
+                            User Management
+                        </a>
+                    </li>
+                    <li th:if="${session.userId == 1}">
+                        <a th:href="@{/admin/type}">
+                            Type Management
+                        </a>
+                    </li>
+                    <li th:if="${session.userId == 1}">
+                        <a th:href="@{/admin/tag}">
+                            Tag Management
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="/about">About & Friends</a></li>
+            <li th:if="${session.username != null}" th:text="'Hello, ' + ${session.username}"></li>
+            <li th:if="${session.userId == null}"><a href="/login" class="button">Sign In</a></li>
+            <li th:if="${session.userId != null}"><a href="/logout" class="button">Sign Out</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Header -->
+<header id="header" class="alt" th:fragment="navbar-index">
+    <h1><a th:href="@{/}">江文.WenDev</a></h1>
+    <nav id="nav">
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li>
+                <a href="" class="icon fa-angle-down">Articles</a>
+                <ul>
+                    <li><a href="/search">Search</a></li>
+                    <li><a href="/type">Type</a></li>
+                    <li><a href="/tag">Tag</a></li>
+                    <li><a href="/archive">Archive</a></li>
+                </ul>
+            </li>
+            <li th:if="${session.userId == 1}">
+                <a href="" class="icon fa-angle-down">Manage</a>
+                <ul>
+                    <li th:if="${session.userId == 1}">
+                        <a th:href="@{/admin/article/add}">
+                            Add
+                        </a>
+                    </li>
+                    <li th:if="${session.userId == 1}">
+                        <a th:href="@{/admin/article}">
+                            Article Management
+                        </a>
+                    </li>
+                    <li th:if="${session.userId == 1}">
+                        <a th:href="@{/admin/user}">
+                            User Management
+                        </a>
+                    </li>
+                    <li th:if="${session.userId == 1}">
+                        <a th:href="@{/admin/type}">
+                            Type Management
+                        </a>
+                    </li>
+                    <li th:if="${session.userId == 1}">
+                        <a th:href="@{/admin/tag}">
+                            Tag Management
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="/about">About & Friends</a></li>
+            <li th:if="${session.username != null}" th:text="'Hello, ' + ${session.username}"></li>
+            <li th:if="${session.userId == null}"><a href="/login" class="button">Sign In</a></li>
+            <li th:if="${session.userId != null}"><a href="/logout" class="button">Sign Out</a></li>
+        </ul>
+    </nav>
+</header>
+</body>
+</html>

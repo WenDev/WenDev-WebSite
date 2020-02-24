@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/head :: head(~{:: title}, ~{:: link})">
+    <title th:text="${article.title}"></title>
+    <link rel="stylesheet" th:href="@{/css/wen.css}">
+    <link rel="stylesheet" th:href="@{/css/article.css}">
+</head>
+<body>
+<script th:src="@{/js/toc.js}"></script>
+<!-- Header -->
+<div th:replace="components/navbar_and_head :: navbarAndHeader"></div>
+<!-- End Header -->
+
+<!-- Content -->
+<div class="container-fluid">
+    <!-- Margin-Left -->
+    <div class="col-md-1" style="background-color: transparent; height: 200px;"></div>
+    <!-- End Margin-Left -->
+
+    <!-- Articles and Comments -->
+    <div class="col-md-8">
+        <div class="article">
+            <div>
+                <p class="title" th:text="${article.title}"></p>
+            </div>
+            <div class="article-info">
+                <span class="glyphicon glyphicon-calendar"></span>
+                <span class="info-content" th:text="${#dates.format(article.updateTime, 'yyyy-MM-dd HH:mm')}"></span>
+                <span class="glyphicon glyphicon-th-list"></span>
+                <span class="info-content" th:text="${article.type.name}"></span>
+                <span class="glyphicon glyphicon-eye-open"></span>
+                <span class="info-content" th:text="${article.views}"></span>
+                <span class="glyphicon glyphicon-tag"></span>
+                <span class="info-content" th:each="tag : ${article.tags}" th:text="${tag.name}"></span>
+            </div>
+            <div>
+                <div id="md" th:utext="${article.content}"></div>
+            </div>
+        </div>
+        <!-- Comments -->
+        <div class="comments" th:fragment="commentList">
+            <h1>Comments</h1>
+            <div class="comment" th:each="comment : ${comments}">
+                <div class="comment-info">
+                    <span class="glyphicon glyphicon-comment"></span>
+                    <span class="info-content" th:text="${comment.user.nickname}"></span>
+                    <span class="glyphicon glyphicon-envelope"></span>
+                    <span class="info-content" th:text="${comment.user.email}"></span>
+                    <span class="glyphicon glyphicon-calendar"></span>
+                    <span class="info-content"
+                          th:text="${#dates.format(comment.createTime, 'yyyy-MM-dd HH:mm')}">
+                    </span>
+                    <span class="info-content">
+                        <a th:onclick="'javascript:reply(' + ${comment.id} + ')'">回复</a>
+                    </span>
+                    <span class="info-content" th:if="${session.userId == 1}">
+                        <a th:href="@{'/comments/delete/' + ${article.id} + '/' + ${comment.id}}">删除</a></span>
+                </div>
+                <div class="comment-content" th:text="${comment.content}">
+                </div>
+
+                <div class="sub-comments" th:if="${comment.replyComments.size() > 0}">
+                    <div class="sub-comment" th:each="subcomment : ${comment.replyComments}">
+                        <div class="comment-info">
+                            <span class="glyphicon glyphicon-comment"></span>
+                            <span class="info-content" th:text="${subcomment.user.nickname}"></span>
+                            <span class="glyphicon glyphicon-envelope"></span>
+                            <span class="info-content" th:text="${subcomment.user.email}"></span>
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            <span class="info-content"
+                                  th:text="${#dates.format(subcomment.createTime, 'yyyy-MM-dd HH:mm')}">
+                            </span>
+                            <span class="info-content">
+                                <a th:onclick="'javascript:reply(' + ${subcomment.id} + ')'">
+                                    回复
+                                </a>
+                            </span>
+                            <span class="info-content" th:if="${session.userId == 1}">
+                                <a th:href="@{'/comments/delete/' + ${article.id} + '/' + ${subcomment.id}}">删除</a>
+                            </span>
+                        </div>
+                        <div class="sub-comment-content">
+                            <strong th:text="'@' + ${subcomment.parentComment.user.nickname}"></strong>
+                            <span th:text="${subcomment.content}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form th:action="@{'/comments/' + ${article.id}}" method="post">
+            <div class="form-group" id="comment-form">
+                <h1>Post a comment</h1>
+                <div th:if="${session.userId == null}">
+                    <label for="comment1"></label>
+                    <textarea id="comment1" rows="10" class="comment-area form-control" name="content"
+                              placeholder="Please Login first" disabled></textarea></div>
+                <div th:if="${session.userId != null}">
+                    <label for="comment"></label>
+                    <textarea id="comment" rows="10" class="comment-area form-control" name="content"
+                              placeholder="Comment"></textarea>
+                </div>
+            </div>
+            <div th:if="${session.userId != null}">
+                <input type="submit" class="btn btn-default pull-right submit-btn" value="Submit">
+            </div>
+        </form>
+        <!-- End Comments -->
+    </div>
+    <!-- End Articles and Comments -->
+
+    <!-- Content-Right -->
+    <div class="col-md-2">
+        <!-- Top Categories -->
+        <div id="TOC">
+            <h3 class="right-info">Category</h3>
+            <div class="category-item-group" id="category-item-group"></div>
+        </div>
+        <!-- End top categories -->
+    </div>
+    <!-- End Content-Right -->
+
+    <!-- Margin-Right -->
+    <div class="col-md-1" style="background-color: transparent; height: 200px;"></div>
+    <!-- End Margin-Right -->
+
+</div>
+<!-- End Content -->
+
+<!-- Footer -->
+<div th:replace="components/footer :: footer" style="margin-top: 100px"></div>
+<!-- End Footer -->
+
+<script>
+  function reply (commentId) {
+    let coment_form = document.getElementById('comment-form')
+    let textarea = document.querySelector('textarea')
+    let ipt = document.createElement('input')
+    ipt.setAttribute('name', 'parentId')
+    ipt.setAttribute('value', commentId)
+    ipt.setAttribute('type', 'hidden')
+    textarea.setAttribute('placeholder', 'Replying......')
+    coment_form.appendChild(ipt)
+  }
+</script>
+</body>
+</html>
